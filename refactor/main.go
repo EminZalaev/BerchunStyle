@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"os"
 )
 
 func main() {
@@ -203,8 +204,21 @@ func main() {
 
 	//part 4
 
-	for n := 1; n <= 25; n++ {
+	MfromN4File, _ := os.Create("MfromN4.txt")
+	defer MfromN4File.Close()
+
+	Kz4File, _ := os.Create("Kz4.txt")
+	defer Kz4File.Close()
+
+	PQ4File, _ := os.Create("PQ4.txt")
+	defer PQ4File.Close()
+
+	MQ4File, _ := os.Create("MQ4.txt")
+	defer MQ4File.Close()
+
+	for n := 1; n <= 12; n++ {
 		K4 := make([]float64, n)
+		nString := fmt.Sprintf("%d", n)
 
 		fmt.Println("\nlambda =", lambda, "\nmu = ", mu, "\nQ =", "\nV =", v)
 
@@ -217,14 +231,26 @@ func main() {
 		M_N4 := MfromN4(K4, n, Po4, lambda, mu, v, ii)
 		fmt.Println("M(N)4: ", M_N4)
 
+		MfromN4String := fmt.Sprintf("%f", M_N4)
+		MfromN4File.WriteString(nString + "	" + MfromN4String + "\n")
+
 		Kz4 := M_N4 / float64(n)
 		fmt.Println("K(Z)4: ", Kz4)
+
+		Kz4String := fmt.Sprintf("%f", Kz4)
+		Kz4File.WriteString(nString + "	" + Kz4String + "\n")
 
 		PQ4 := PfromQ4(K4, n, Po4, lambda, mu, v, ii)
 		fmt.Println("P(Q)4: ", PQ4)
 
+		PQ4String := fmt.Sprintf("%f", PQ4)
+		PQ4File.WriteString(nString + "	" + PQ4String + "\n")
+
 		MQ4 := MfromQ4(K4, n, Po4, lambda, mu, v, ii)
 		fmt.Println("M(Q)4: ", MQ4)
+
+		MQ4String := fmt.Sprintf("%f", MQ4)
+		MQ4File.WriteString(nString + "	" + MQ4String + "\n")
 
 		Kzq4 := MQ4 / float64(n)
 		fmt.Println("Kzq4: ", Kzq4)
