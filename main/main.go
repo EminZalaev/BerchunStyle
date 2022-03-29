@@ -2,35 +2,71 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 func main() {
-	lambda := 1.0
-	mu := 1.0
-	n := 2
-	N := 5
+	N := 48
+	Tc := 368
+	Ts := 8
+	lambda := 1 / float64(Tc)
+	mu := 1.0 / float64(Ts)
 	//K := make([]float64, N)
 
-	Kcalc := Kfunc(n, N, lambda, mu)
-	fmt.Println("K: ", Kcalc)
+	MfromNwFile, _ := os.Create("MfromNw.txt")
+	defer MfromNwFile.Close()
 
-	Po := PoFunc(Kcalc, N)
-	fmt.Println("Po: ", Po)
+	MQFile, _ := os.Create("MQ.txt")
+	defer MQFile.Close()
 
-	MNw := MfromNw(Kcalc, n, N, Po)
-	fmt.Println("M(Nw): ", MNw)
+	PQFile, _ := os.Create("PQ.txt")
+	defer PQFile.Close()
 
-	MQ := MfromQ(Kcalc, n, N, Po)
-	fmt.Println("M(Q): ", MQ)
+	MnFile, _ := os.Create("Mn.txt")
+	defer MnFile.Close()
 
-	PQ := PfromQ(Kcalc, n, N, Po)
-	fmt.Println("P(Q): ", PQ)
+	KznFile, _ := os.Create("Kzn.txt")
+	defer KznFile.Close()
 
-	MN := MfromN(Kcalc, n, N, Po)
-	fmt.Println("M(N): ", MN)
+	for n := 1; n < 10; n++ {
+		Kcalc := Kfunc(n, N, lambda, mu)
+		nString := fmt.Sprintf("%d", n)
 
-	Kzn := MN / float64(n)
-	fmt.Println("Kzn: ", Kzn)
+		fmt.Println("K: ", Kcalc)
+
+		Po := PoFunc(Kcalc, N)
+		fmt.Println("Po: ", Po)
+
+		MNw := MfromNw(Kcalc, n, N, Po)
+		fmt.Println("M(Nw): ", MNw)
+
+		MNwString := fmt.Sprintf("%f", MNw)
+		MfromNwFile.WriteString(nString + "	" + MNwString + "\n")
+
+		MQ := MfromQ(Kcalc, n, N, Po)
+		fmt.Println("M(Q): ", MQ)
+
+		MQString := fmt.Sprintf("%f", MQ)
+		MQFile.WriteString(nString + "	" + MQString + "\n")
+
+		PQ := PfromQ(Kcalc, n, N, Po)
+		fmt.Println("P(Q): ", PQ)
+
+		PQString := fmt.Sprintf("%f", PQ)
+		PQFile.WriteString(nString + "	" + PQString + "\n")
+
+		MN := MfromN(Kcalc, n, N, Po)
+		fmt.Println("M(N): ", MN)
+
+		MNString := fmt.Sprintf("%f", MN)
+		MnFile.WriteString(nString + "	" + MNString + "\n")
+
+		Kzn := MN / float64(n)
+		fmt.Println("Kzn: ", Kzn)
+
+		KznString := fmt.Sprintf("%f", Kzn)
+		KznFile.WriteString(nString + "	" + KznString + "\n")
+	}
 }
 
 func Kfunc(n int, N int, lambda float64, mu float64) []float64 {

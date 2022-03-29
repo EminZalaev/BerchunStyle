@@ -10,197 +10,195 @@ func main() {
 	Tc := 49
 	Ts := 213
 	Tw := 587
-	//n := 4
-
-	//lambda := 3.0
-	//mu := 1.0
 
 	lambda := 1 / float64(Tc)
 	mu := 1 / float64(Ts)
 	v := 1 / float64(Tw)
+
 	//part 1.1
-	//fmt.Println("\nlambda =", lambda, "\nmu = ", mu)
-	//
-	//PotkazFile, _ := os.Create("Potkaz.txt")
-	//defer PotkazFile.Close()
-	//
-	//MfromNFile, _ := os.Create("MfromN.txt")
-	//defer MfromNFile.Close()
-	//
-	//KzFile, _ := os.Create("Kz.txt")
-	//defer KzFile.Close()
-	//
-	//for n := 1; n <= 10; n++ {
-	//	K := make([]float64, n)
-	//
-	//	Kcomp := Kfunc(lambda, mu, n, K)
-	//	fmt.Println("\nK1: ", Kcomp)
-	//
-	//	Po := PoCalc(K, n)
-	//	fmt.Println("Po: ", Po)
-	//
-	//	Potkaz := PoCalc(K, n) * K[n-1]
-	//	fmt.Println("Pотказ: ", Potkaz)
-	//
-	//	M_N := MfromN(K, Po, n)
-	//	fmt.Println("M(N): ", M_N)
-	//
-	//	Kz := M_N / float64(n)
-	//	fmt.Println("Kz: ", Kz)
-	//
-	//	PotkazString := fmt.Sprintf("%f", Potkaz)
-	//	nString := fmt.Sprintf("%d", n)
-	//	PotkazFile.WriteString(nString + " " + PotkazString + "\n")
-	//
-	//	MfromNString := fmt.Sprintf("%f", M_N)
-	//	MfromNFile.WriteString(nString + " " + MfromNString + "\n")
-	//
-	//	KzString := fmt.Sprintf("%f", Kz)
-	//	KzFile.WriteString(nString + " " + KzString + "\n")
-	//}
-	//
-	////part 1.2
-	//fmt.Println("\nlambda =", lambda, "\nmu = ", mu, "\nn =", n, "\nQ =", Q)
 
-	//Potkaz2File, _ := os.Create("Potkaz2.txt")
-	//defer Potkaz2File.Close()
-	//
-	//MfromN2File, _ := os.Create("MfromN2.txt")
-	//defer MfromN2File.Close()
-	//
-	//Kz2File, _ := os.Create("Kz2.txt")
-	//defer Kz2File.Close()
-	//
-	//PQ2File, _ := os.Create("PQ2.txt")
-	//defer PQ2File.Close()
-	//
-	//MQ2File, _ := os.Create("MQ2.txt")
-	//defer MQ2File.Close()
-	//
-	//KzQ2File, _ := os.Create("KzQ2.txt")
-	//defer KzQ2File.Close()
-	//
-	//for n := 1; n <= 5; n++ {
-	//	QStirng := fmt.Sprintf("%d", n)
-	//
-	//	Potkaz2File.WriteString(QStirng + "	")
-	//	MfromN2File.WriteString(QStirng + "	")
-	//	Kz2File.WriteString(QStirng + "	")
-	//	PQ2File.WriteString(QStirng + "	")
-	//	MQ2File.WriteString(QStirng + "	")
-	//	KzQ2File.WriteString(QStirng + "	")
-	//
-	//	for Q := 1; Q <= 17; Q++ {
-	//		K := make([]float64, n+Q)
-	//
-	//		K2 := Kfunc2(n, Q, lambda, mu, K)
-	//		fmt.Println("\nK2: ", K2)
-	//
-	//		Po2 := PoCalc(K2, n+Q)
-	//		fmt.Println("Po2: ", Po2)
-	//
-	//		Potkaz2 := PoCalc(K2, n+Q) * K2[n+Q-1]
-	//		fmt.Println("Pотказ2: ", Potkaz2)
-	//
-	//		Potkaz2String := fmt.Sprintf("%f", Potkaz2)
-	//		Potkaz2File.WriteString(Potkaz2String + "	")
-	//
-	//		M_N2 := MfromN2(K2, Po2, n, Q)
-	//		fmt.Println("M(N)2: ", M_N2)
-	//
-	//		MfromN2String := fmt.Sprintf("%f", M_N2)
-	//		MfromN2File.WriteString(MfromN2String + "	")
-	//
-	//		Kz2 := MfromN2(K2, Po2, n, Q) / float64(n)
-	//		fmt.Println("Kz2: ", Kz2)
-	//
-	//		Kz2String := fmt.Sprintf("%f", Kz2)
-	//		Kz2File.WriteString(Kz2String + "	")
-	//
-	//		PQ2 := PfromQ2(Po2, K2, lambda, mu, n, Q)
-	//		fmt.Println("P(Q)2: ", PQ2)
-	//
-	//		PQ2String := fmt.Sprintf("%f", PQ2)
-	//		PQ2File.WriteString(PQ2String + "	")
-	//
-	//		M_Q2 := MfromQ(Po2, K2, n, Q)
-	//		fmt.Println("M(Q)2: ", M_Q2)
-	//
-	//		MQ2String := fmt.Sprintf("%f", M_Q2)
-	//		MQ2File.WriteString(MQ2String + "	")
-	//
-	//		K_ZQ2 := MfromQ(Po2, K2, n, Q) / float64(n)
-	//		fmt.Println("Kzq2: ", K_ZQ2)
-	//
-	//		KzQ2String := fmt.Sprintf("%f", K_ZQ2)
-	//		KzQ2File.WriteString(KzQ2String + "	")
-	//
-	//	}
-	//	Potkaz2File.WriteString("\n")
-	//	MfromN2File.WriteString("\n")
-	//	Kz2File.WriteString("\n")
-	//	PQ2File.WriteString("\n")
-	//	MQ2File.WriteString("\n")
-	//	KzQ2File.WriteString("\n")
-	//}
+	fmt.Println("\nlambda =", lambda, "\nmu = ", mu)
 
-	// part 1.3
-	//
-	//MfromN3File, _ := os.Create("MfromN3.txt")
-	//defer MfromN3File.Close()
-	//
-	//Kz3File, _ := os.Create("Kz3.txt")
-	//defer Kz3File.Close()
-	//
-	//PQ3File, _ := os.Create("PQ3.txt")
-	//defer PQ3File.Close()
-	//
-	//MQ3File, _ := os.Create("MQ3.txt")
-	//defer MQ3File.Close()
-	//
-	//for n := 1; n <= 19; n++ {
-	//	if geta(lambda, n, mu) >= 1 {
-	//		continue
-	//	}
-	//
-	//	nString := fmt.Sprintf("%d", n)
-	//
-	//	K3 := make([]float64, n)
-	//	fmt.Println("\nlambda =", lambda, "\nmu = ", mu)
-	//
-	//	Kcomp3 := Kfunc(lambda, mu, n, K3)
-	//	fmt.Println("\nK3: ", Kcomp3)
-	//
-	//	Po3 := PoCalc3(Kcomp3, n, lambda, mu)
-	//	fmt.Println("Po3: ", Po3)
-	//
-	//	M_N3 := MformN3(Kcomp3, n, Po3, lambda, mu)
-	//	fmt.Println("M(N)3: ", M_N3)
-	//
-	//	MfromN3String := fmt.Sprintf("%f", M_N3)
-	//	MfromN3File.WriteString(nString + "	" + MfromN3String + "\n")
-	//
-	//	Kz3 := M_N3 / float64(n)
-	//	fmt.Println("Kz3: ", Kz3)
-	//
-	//	Kz3String := fmt.Sprintf("%f", Kz3)
-	//	Kz3File.WriteString(nString + "	" + Kz3String + "\n")
-	//
-	//	PQ3 := PfromQ3(K3, n, lambda, mu, Po3)
-	//	fmt.Println("P(Q)3: ", PQ3)
-	//
-	//	PQ3String := fmt.Sprintf("%f", PQ3)
-	//	PQ3File.WriteString(nString + "	" + PQ3String + "\n")
-	//
-	//	MQ3 := MfromQ3(K3, n, lambda, mu, Po3)
-	//	fmt.Println("M(Q)3: ", MQ3)
-	//
-	//	MQ3String := fmt.Sprintf("%f", MQ3)
-	//	MQ3File.WriteString(nString + "	" + MQ3String + "\n")
-	//
-	//	K_ZQ3 := MQ3 / float64(n)
-	//	fmt.Println("Kzq3: ", K_ZQ3)
-	//}
+	PotkazFile, _ := os.Create("Potkaz.txt")
+	defer PotkazFile.Close()
+
+	MfromNFile, _ := os.Create("MfromN.txt")
+	defer MfromNFile.Close()
+
+	KzFile, _ := os.Create("Kz.txt")
+	defer KzFile.Close()
+
+	for n := 1; n <= 10; n++ {
+		K := make([]float64, n)
+
+		Kcomp := Kfunc(lambda, mu, n, K)
+		fmt.Println("\nK1: ", Kcomp)
+
+		Po := PoCalc(K, n)
+		fmt.Println("Po: ", Po)
+
+		Potkaz := PoCalc(K, n) * K[n-1]
+		fmt.Println("Pотказ: ", Potkaz)
+
+		M_N := MfromN(K, Po, n)
+		fmt.Println("M(N): ", M_N)
+
+		Kz := M_N / float64(n)
+		fmt.Println("Kz: ", Kz)
+
+		PotkazString := fmt.Sprintf("%f", Potkaz)
+		nString := fmt.Sprintf("%d", n)
+		PotkazFile.WriteString(nString + " " + PotkazString + "\n")
+
+		MfromNString := fmt.Sprintf("%f", M_N)
+		MfromNFile.WriteString(nString + " " + MfromNString + "\n")
+
+		KzString := fmt.Sprintf("%f", Kz)
+		KzFile.WriteString(nString + " " + KzString + "\n")
+	}
+
+	//part 1.2
+	fmt.Println("\nlambda =", lambda, "\nmu = ", mu, "\nn =")
+
+	Potkaz2File, _ := os.Create("Potkaz2.txt")
+	defer Potkaz2File.Close()
+
+	MfromN2File, _ := os.Create("MfromN2.txt")
+	defer MfromN2File.Close()
+
+	Kz2File, _ := os.Create("Kz2.txt")
+	defer Kz2File.Close()
+
+	PQ2File, _ := os.Create("PQ2.txt")
+	defer PQ2File.Close()
+
+	MQ2File, _ := os.Create("MQ2.txt")
+	defer MQ2File.Close()
+
+	KzQ2File, _ := os.Create("KzQ2.txt")
+	defer KzQ2File.Close()
+
+	for n := 1; n <= 5; n++ {
+		QStirng := fmt.Sprintf("%d", n)
+
+		Potkaz2File.WriteString(QStirng + "	")
+		MfromN2File.WriteString(QStirng + "	")
+		Kz2File.WriteString(QStirng + "	")
+		PQ2File.WriteString(QStirng + "	")
+		MQ2File.WriteString(QStirng + "	")
+		KzQ2File.WriteString(QStirng + "	")
+
+		for Q := 1; Q <= 17; Q++ {
+			K := make([]float64, n+Q)
+
+			K2 := Kfunc2(n, Q, lambda, mu, K)
+			fmt.Println("\nK2: ", K2)
+
+			Po2 := PoCalc(K2, n+Q)
+			fmt.Println("Po2: ", Po2)
+
+			Potkaz2 := PoCalc(K2, n+Q) * K2[n+Q-1]
+			fmt.Println("Pотказ2: ", Potkaz2)
+
+			Potkaz2String := fmt.Sprintf("%f", Potkaz2)
+			Potkaz2File.WriteString(Potkaz2String + "	")
+
+			M_N2 := MfromN2(K2, Po2, n, Q)
+			fmt.Println("M(N)2: ", M_N2)
+
+			MfromN2String := fmt.Sprintf("%f", M_N2)
+			MfromN2File.WriteString(MfromN2String + "	")
+
+			Kz2 := MfromN2(K2, Po2, n, Q) / float64(n)
+			fmt.Println("Kz2: ", Kz2)
+
+			Kz2String := fmt.Sprintf("%f", Kz2)
+			Kz2File.WriteString(Kz2String + "	")
+
+			PQ2 := PfromQ2(Po2, K2, lambda, mu, n, Q)
+			fmt.Println("P(Q)2: ", PQ2)
+
+			PQ2String := fmt.Sprintf("%f", PQ2)
+			PQ2File.WriteString(PQ2String + "	")
+
+			M_Q2 := MfromQ(Po2, K2, n, Q)
+			fmt.Println("M(Q)2: ", M_Q2)
+
+			MQ2String := fmt.Sprintf("%f", M_Q2)
+			MQ2File.WriteString(MQ2String + "	")
+
+			K_ZQ2 := MfromQ(Po2, K2, n, Q) / float64(n)
+			fmt.Println("Kzq2: ", K_ZQ2)
+
+			KzQ2String := fmt.Sprintf("%f", K_ZQ2)
+			KzQ2File.WriteString(KzQ2String + "	")
+
+		}
+		Potkaz2File.WriteString("\n")
+		MfromN2File.WriteString("\n")
+		Kz2File.WriteString("\n")
+		PQ2File.WriteString("\n")
+		MQ2File.WriteString("\n")
+		KzQ2File.WriteString("\n")
+	}
+
+	//part 1.3
+
+	MfromN3File, _ := os.Create("MfromN3.txt")
+	defer MfromN3File.Close()
+
+	Kz3File, _ := os.Create("Kz3.txt")
+	defer Kz3File.Close()
+
+	PQ3File, _ := os.Create("PQ3.txt")
+	defer PQ3File.Close()
+
+	MQ3File, _ := os.Create("MQ3.txt")
+	defer MQ3File.Close()
+
+	for n := 1; n <= 19; n++ {
+		if geta(lambda, n, mu) >= 1 {
+			continue
+		}
+
+		nString := fmt.Sprintf("%d", n)
+
+		K3 := make([]float64, n)
+		fmt.Println("\nlambda =", lambda, "\nmu = ", mu)
+
+		Kcomp3 := Kfunc(lambda, mu, n, K3)
+		fmt.Println("\nK3: ", Kcomp3)
+
+		Po3 := PoCalc3(Kcomp3, n, lambda, mu)
+		fmt.Println("Po3: ", Po3)
+
+		M_N3 := MformN3(Kcomp3, n, Po3, lambda, mu)
+		fmt.Println("M(N)3: ", M_N3)
+
+		MfromN3String := fmt.Sprintf("%f", M_N3)
+		MfromN3File.WriteString(nString + "	" + MfromN3String + "\n")
+
+		Kz3 := M_N3 / float64(n)
+		fmt.Println("Kz3: ", Kz3)
+
+		Kz3String := fmt.Sprintf("%f", Kz3)
+		Kz3File.WriteString(nString + "	" + Kz3String + "\n")
+
+		PQ3 := PfromQ3(K3, n, lambda, mu, Po3)
+		fmt.Println("P(Q)3: ", PQ3)
+
+		PQ3String := fmt.Sprintf("%f", PQ3)
+		PQ3File.WriteString(nString + "	" + PQ3String + "\n")
+
+		MQ3 := MfromQ3(K3, n, lambda, mu, Po3)
+		fmt.Println("M(Q)3: ", MQ3)
+
+		MQ3String := fmt.Sprintf("%f", MQ3)
+		MQ3File.WriteString(nString + "	" + MQ3String + "\n")
+
+		K_ZQ3 := MQ3 / float64(n)
+		fmt.Println("Kzq3: ", K_ZQ3)
+	}
 
 	//part 4
 
