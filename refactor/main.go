@@ -3,12 +3,11 @@ package main
 import (
 	"fmt"
 	"math"
-	"os"
 )
 
 func main() {
 	Tc := 49
-	////Ts := 213
+	Ts := 213
 	Tw := 587
 	//n := 4
 
@@ -16,7 +15,8 @@ func main() {
 	//mu := 1.0
 
 	lambda := 1 / float64(Tc)
-	mu := 1 / float64(Tw)
+	mu := 1 / float64(Ts)
+	v := 1 / float64(Tw)
 	//part 1.1
 	//fmt.Println("\nlambda =", lambda, "\nmu = ", mu)
 	//
@@ -29,7 +29,7 @@ func main() {
 	//KzFile, _ := os.Create("Kz.txt")
 	//defer KzFile.Close()
 	//
-	//for n := 1; n <= 20; n++ {
+	//for n := 1; n <= 10; n++ {
 	//	K := make([]float64, n)
 	//
 	//	Kcomp := Kfunc(lambda, mu, n, K)
@@ -79,7 +79,7 @@ func main() {
 	//KzQ2File, _ := os.Create("KzQ2.txt")
 	//defer KzQ2File.Close()
 	//
-	//for n := 1; n <= 13; n++ {
+	//for n := 1; n <= 5; n++ {
 	//	QStirng := fmt.Sprintf("%d", n)
 	//
 	//	Potkaz2File.WriteString(QStirng + "	")
@@ -89,7 +89,7 @@ func main() {
 	//	MQ2File.WriteString(QStirng + "	")
 	//	KzQ2File.WriteString(QStirng + "	")
 	//
-	//	for Q := 1; Q <= 20; Q++ {
+	//	for Q := 1; Q <= 17; Q++ {
 	//		K := make([]float64, n+Q)
 	//
 	//		K2 := Kfunc2(n, Q, lambda, mu, K)
@@ -144,92 +144,92 @@ func main() {
 	//}
 
 	// part 1.3
-
-	MfromN3File, _ := os.Create("MfromN3.txt")
-	defer MfromN3File.Close()
-
-	Kz3File, _ := os.Create("Kz3.txt")
-	defer Kz3File.Close()
-
-	PQ3File, _ := os.Create("PQ3.txt")
-	defer PQ3File.Close()
-
-	MQ3File, _ := os.Create("PQ3.txt")
-	defer MQ3File.Close()
-
-	for n := 1; n <= 19; n++ {
-		if geta(lambda, n, mu) >= 1 {
-			continue
-		}
-
-		nString := fmt.Sprintf("%d", n)
-
-		K3 := make([]float64, n)
-		fmt.Println("\nlambda =", lambda, "\nmu = ", mu)
-
-		Kcomp3 := Kfunc(lambda, mu, n, K3)
-		fmt.Println("\nK3: ", Kcomp3)
-
-		Po3 := PoCalc3(Kcomp3, n, lambda, mu)
-		fmt.Println("Po3: ", Po3)
-
-		M_N3 := MformN3(Kcomp3, n, Po3, lambda, mu)
-		fmt.Println("M(N)3: ", M_N3)
-
-		MfromN3String := fmt.Sprintf("%f", M_N3)
-		MfromN3File.WriteString(nString + "	" + MfromN3String + "\n")
-
-		Kz3 := M_N3 / float64(n)
-		fmt.Println("Kz3: ", Kz3)
-
-		Kz3String := fmt.Sprintf("%f", Kz3)
-		Kz3File.WriteString(nString + "	" + Kz3String + "\n")
-
-		PQ3 := PfromQ3(K3, n, lambda, mu, Po3)
-		fmt.Println("P(Q)3: ", PQ3)
-
-		PQ3String := fmt.Sprintf("%f", PQ3)
-		PQ3File.WriteString(nString + "	" + PQ3String + "\n")
-
-		MQ3 := MfromQ3(K3, n, lambda, mu, Po3)
-		fmt.Println("M(Q)3: ", MQ3)
-
-		MQ3String := fmt.Sprintf("%f", MQ3)
-		MQ3File.WriteString(nString + "	" + MQ3String + "\n")
-
-		K_ZQ3 := MQ3 / float64(n)
-		fmt.Println("Kzq3: ", K_ZQ3)
-	}
-
-	// part 4
-	//v := 1.0
-	//for n := 1; n <= 25; n++ {
-	//	K4 := make([]float64, n)
 	//
-	//	fmt.Println("\nlambda =", lambda, "\nmu = ", mu, "\nQ =", "\nV =", v)
+	//MfromN3File, _ := os.Create("MfromN3.txt")
+	//defer MfromN3File.Close()
 	//
-	//	Kcomp4 := Kfunc(lambda, mu, n, K4)
-	//	fmt.Println("\nK4: ", Kcomp4)
+	//Kz3File, _ := os.Create("Kz3.txt")
+	//defer Kz3File.Close()
 	//
-	//	Po4, ii := PoCalc4(K4, n, lambda, mu, v)
-	//	fmt.Println("Po4: ", Po4, "\nii: ", ii)
+	//PQ3File, _ := os.Create("PQ3.txt")
+	//defer PQ3File.Close()
 	//
-	//	M_N4 := MfromN4(K4, n, Po4, lambda, mu, v, ii)
-	//	fmt.Println("M(N)4: ", M_N4)
+	//MQ3File, _ := os.Create("MQ3.txt")
+	//defer MQ3File.Close()
 	//
-	//	Kz4 := M_N4 / float64(n)
-	//	fmt.Println("K(Z)4: ", Kz4)
+	//for n := 1; n <= 19; n++ {
+	//	if geta(lambda, n, mu) >= 1 {
+	//		continue
+	//	}
 	//
-	//	PQ4 := PfromQ4(K4, n, Po4, lambda, mu, v, ii)
-	//	fmt.Println("P(Q)4: ", PQ4)
+	//	nString := fmt.Sprintf("%d", n)
 	//
-	//	MQ4 := MfromQ4(K4, n, Po4, lambda, mu, v, ii)
-	//	fmt.Println("M(Q)4: ", MQ4)
+	//	K3 := make([]float64, n)
+	//	fmt.Println("\nlambda =", lambda, "\nmu = ", mu)
 	//
-	//	Kzq4 := MQ4 / float64(n)
-	//	fmt.Println("Kzq4: ", Kzq4)
-	//	fmt.Println()
+	//	Kcomp3 := Kfunc(lambda, mu, n, K3)
+	//	fmt.Println("\nK3: ", Kcomp3)
+	//
+	//	Po3 := PoCalc3(Kcomp3, n, lambda, mu)
+	//	fmt.Println("Po3: ", Po3)
+	//
+	//	M_N3 := MformN3(Kcomp3, n, Po3, lambda, mu)
+	//	fmt.Println("M(N)3: ", M_N3)
+	//
+	//	MfromN3String := fmt.Sprintf("%f", M_N3)
+	//	MfromN3File.WriteString(nString + "	" + MfromN3String + "\n")
+	//
+	//	Kz3 := M_N3 / float64(n)
+	//	fmt.Println("Kz3: ", Kz3)
+	//
+	//	Kz3String := fmt.Sprintf("%f", Kz3)
+	//	Kz3File.WriteString(nString + "	" + Kz3String + "\n")
+	//
+	//	PQ3 := PfromQ3(K3, n, lambda, mu, Po3)
+	//	fmt.Println("P(Q)3: ", PQ3)
+	//
+	//	PQ3String := fmt.Sprintf("%f", PQ3)
+	//	PQ3File.WriteString(nString + "	" + PQ3String + "\n")
+	//
+	//	MQ3 := MfromQ3(K3, n, lambda, mu, Po3)
+	//	fmt.Println("M(Q)3: ", MQ3)
+	//
+	//	MQ3String := fmt.Sprintf("%f", MQ3)
+	//	MQ3File.WriteString(nString + "	" + MQ3String + "\n")
+	//
+	//	K_ZQ3 := MQ3 / float64(n)
+	//	fmt.Println("Kzq3: ", K_ZQ3)
 	//}
+
+	//part 4
+
+	for n := 1; n <= 25; n++ {
+		K4 := make([]float64, n)
+
+		fmt.Println("\nlambda =", lambda, "\nmu = ", mu, "\nQ =", "\nV =", v)
+
+		Kcomp4 := Kfunc(lambda, mu, n, K4)
+		fmt.Println("\nK4: ", Kcomp4)
+
+		Po4, ii := PoCalc4(K4, n, lambda, mu, v)
+		fmt.Println("Po4: ", Po4, "\nii: ", ii)
+
+		M_N4 := MfromN4(K4, n, Po4, lambda, mu, v, ii)
+		fmt.Println("M(N)4: ", M_N4)
+
+		Kz4 := M_N4 / float64(n)
+		fmt.Println("K(Z)4: ", Kz4)
+
+		PQ4 := PfromQ4(K4, n, Po4, lambda, mu, v, ii)
+		fmt.Println("P(Q)4: ", PQ4)
+
+		MQ4 := MfromQ4(K4, n, Po4, lambda, mu, v, ii)
+		fmt.Println("M(Q)4: ", MQ4)
+
+		Kzq4 := MQ4 / float64(n)
+		fmt.Println("Kzq4: ", Kzq4)
+		fmt.Println()
+	}
 }
 
 func Kfunc(lambda float64, mu float64, n int, K []float64) []float64 {
