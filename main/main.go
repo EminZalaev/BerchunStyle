@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	lambda := 3.0
+	lambda := 1.0
 	mu := 1.0
 	n := 2
 	N := 5
@@ -16,6 +16,9 @@ func main() {
 
 	Po := PoFunc(Kcalc, N)
 	fmt.Println("Po: ", Po)
+
+	MNw := MfromNw(Kcalc, n, N, Po)
+	fmt.Println("M(Nw): ", MNw)
 
 	MQ := MfromQ(Kcalc, n, N, Po)
 	fmt.Println("M(Q): ", MQ)
@@ -45,8 +48,8 @@ func Kfunc(n int, N int, lambda float64, mu float64) []float64 {
 }
 
 func PoFunc(K []float64, N int) float64 {
-	var sum, Po float64
-
+	var Po float64
+	sum := 1.0
 	for i := 0; i < N; i++ {
 		sum += K[i]
 	}
@@ -55,9 +58,20 @@ func PoFunc(K []float64, N int) float64 {
 	return Po
 }
 
+func MfromNw(K []float64, n int, N int, Po float64) float64 {
+	var M_N float64
+
+	for i := 0; i < N; i++ {
+		M_N += float64(i+1) * K[i]
+	}
+	M_N = Po * M_N
+
+	return M_N
+}
+
 func MfromQ(K []float64, n int, N int, Po float64) float64 {
 	var M_N float64
-	var j int
+	j := 1
 
 	for i := n; i < N; i++ {
 		M_N += float64(j) * K[i]

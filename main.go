@@ -6,13 +6,13 @@ import (
 )
 
 func main() {
-	//Tc := 49
+	Tc := 49
 	//Ts := 213
-	//Tw := 587
+	Tw := 587
 	//n := 4
 
-	lambda := 3.0
-	mu := 1.0
+	lambda := 1 / float64(Tc)
+	mu := 1 / float64(Tw)
 	//part 1.1
 	fmt.Println("\nlambda =", lambda, "\nmu = ", mu)
 	for n := 1; n <= 4; n++ {
